@@ -13,7 +13,7 @@ local source_hl = {
 }
 
 require("utils").Highlight.colorscheme(function(h)
-  local base = h.bg("Normal")
+  local base = h.bg("Pmenu", { "NormalFloat", "Normal" })
   for kind, _ in pairs(COMPLETION_KIND) do
     local inherit = ("CmpItemKind%s"):format(kind)
     local group = ("%sIcon"):format(inherit)
