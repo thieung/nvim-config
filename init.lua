@@ -1,0 +1,5 @@
+require("config.settings")
+require("config.options")
+require("config.autocmds")
+require("config.keymap.builtin")
+require("config.keymap.user")
