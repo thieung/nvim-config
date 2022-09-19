@@ -21,7 +21,7 @@ gitsigns.setup({
         local inherit = ("GitSigns%s"):format(kind)
         h.set(("GitSigns%sNr"):format(kind), {
           inherit = inherit,
-          bg = h.blend(h.fg(inherit), base, 0.15),
+          bg = h.blend(h.fg(inherit), base, 0.10),
         })
         h.set(("GitSigns%sLn"):format(kind), {
           bg = h.blend(h.fg(inherit), base, 0.05),
@@ -29,11 +29,16 @@ gitsigns.setup({
         h.set(("GitSigns%sInline"):format(kind), {
           bg = h.blend(h.fg(inherit), base, 0.35),
         })
+
+        if kind ~= "Change" then
+          h.set(("GitSigns%sPreview"):format(kind), {
+            bg = h.blend(h.fg(inherit), base, 0.10),
+          })
+        end
       end
     end)
   end,
   preview_config = { border = "rounded" },
-  current_line_blame = true,
   current_line_blame_opts = { delay = vim.api.nvim_get_option("updatetime") },
   current_line_blame_formatter = " ﰖ <author>, <author_time:%Y-%m-%d> - <summary>",
 })
