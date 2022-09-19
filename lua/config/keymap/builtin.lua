@@ -51,12 +51,10 @@ keymap.bind({
 
   --- window
   -- easy split
-  n(map("Zh", ex("leftabove vsplit"))),
-  n(map("Zj", ex("belowright split"))),
-  n(map("Zk", ex("aboveleft split"))),
-  n(map("Zl", ex("rightbelow vsplit"))),
-  -- open terminal buffer at the bottom with 14 rows height
-  n(map("<M-`>", ex("botright 14split term://$SHELL"))),
+  n(map("|", ex("vsplit"))), -- vertical spilit
+  n(map("\\", ex("split"))), -- horizontal spilit
+  -- open terminal buffer at the bottom with 20 rows height
+  n(map("<M-`>", ex("botright 20split term://$SHELL"))),
 
   --- search behavior
   -- map "/" to search current selected text
