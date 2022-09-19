@@ -36,6 +36,7 @@ local plugins = {
   require("config.plugin.trouble.packer_spec"),
   require("config.plugin.terminal.packer_spec"),
   require("config.plugin.mini.packer_spec"),
+  require("config.plugin.smart-splits.packer_spec"),
   --require("config.plugin.heirline.packer_spec"),
 }
 
