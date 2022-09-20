@@ -13,7 +13,7 @@ return {
     "mini.surround",
     "mini.trailspace",
   },
-  event = { "BufRead", "BufNewFile" },
+  event = { "VimEnter" },
   config = function()
     require("config.plugin.mini.setup")
   end,

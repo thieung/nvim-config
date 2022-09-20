@@ -46,3 +46,12 @@ augroup("OnTerminalBuffer", function(autocmd)
     "startinsert",
   })
 end)
+
+augroup("DisableMiniIndentScope", function(autocmd)
+  autocmd({ "BufEnter", "TermOpen" }, "*", function()
+    vim.b.miniindentscope_disable = vim.tbl_contains(
+      { "help", "terminal", "nofile", "prompt" },
+      vim.bo.buftype
+    )
+  end)
+end)
