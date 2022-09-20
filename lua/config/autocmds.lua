@@ -55,3 +55,10 @@ augroup("DisableMiniIndentScope", function(autocmd)
     )
   end)
 end)
+
+augroup("SetTabLine", function(autocmd)
+  autocmd("TabNew", "*", function()
+    local value = [[%{%v:lua.require("config.extra.tabline").draw()%}]]
+    vim.api.nvim_set_option("tabline", value)
+  end)
+end)

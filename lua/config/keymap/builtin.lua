@@ -44,10 +44,16 @@ keymap.bind({
   map("L", "g_"), -- To the last non-blank character of the line
 
   -- buffers
-  n(map(leader("c"), ex("bdelete"))),
-  n(map(leader("x"), ex("bdelete!"))),
-  --n(map("<S-Tab>", ex("bprevious"))),
-  --n(map("<Tab>", ex("bnext"))),
+  n(map(leader("X"), ex("bdelete!"))), -- close buffer
+  n(map(leader("x"), ex("enew<BAR>bdelete #"))), -- close buffer without close window
+  n(map(leader("bd"), ex("bprevious<BAR>bdelete #"))), -- delete current buffer and move to the previous buffer
+  n(map("<S-Tab>", ex("bprevious"))), -- navigate to previous buffer
+  n(map("<Tab>", ex("bnext"))), -- navigate to next buffer
+
+  -- tabs
+  n(map(leader("t"), ex("tabnew"))),
+  n(map(leader("["), ex("-tabmove"))),
+  n(map(leader("]"), ex("+tabmove"))),
 
   --- window
   -- easy split
@@ -69,4 +75,13 @@ keymap.bind({
     end
     return "<CR>"
   end, { expr = true })),
+
+  -- moves line
+  n(map("<C-j>", ":m .+1<CR>==", { silent = true })),
+  i(map("<M-j>", "<Esc>:m .+1<CR>==gi", { silent = true })),
+  v(map("J", ":m '>+1<CR>gv=gv", { silent = true })),
+  n(map("<C-k>", ":m .-2<CR>==", { silent = true })),
+  i(map("<M-k>", "<Esc>:m .-2<CR>==gi", { silent = true })),
+  v(map("K", ":m '<-2<CR>gv=gv", { silent = true })),
+  n(map("J", "'mz' . v:count1 . 'J`z'", { expr = true })), -- join lines without changing cursor position
 })
