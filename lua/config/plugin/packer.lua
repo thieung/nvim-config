@@ -32,7 +32,7 @@ local plugins = {
   require("config.plugin.gitsigns.packer_spec"),
   require("config.plugin.typescript.packer_spec"),
   require("config.plugin.incline.packer_spec"),
-  require("config.plugin.highlight-colors.packer_spec"),
+  require("config.plugin.colorizer.packer_spec"),
   require("config.plugin.trouble.packer_spec"),
   require("config.plugin.terminal.packer_spec"),
   require("config.plugin.mini.packer_spec"),
