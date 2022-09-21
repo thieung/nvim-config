@@ -31,6 +31,19 @@ keymap.bind({
   map("[q", ex("q")),
   map("[Q", ex("xall")),
 
+  -- command mode without arrows and tab
+  nop(c(map("<Tab>"))),
+  nop(c(map("<S-Tab>"))),
+  c(map("<C-a>", "<Home>")),
+  c(map("<C-f>", "<Right>")),
+  c(map("<C-b>", "<Left>")),
+  c(map("<M-f>", "<S-Right>")),
+  c(map("<M-b>", "<S-Left>")),
+  c(map("<C-p>", "<Up>")),
+  c(map("<C-n>", "<Down>")),
+  c(map("<C-k>", "<Up>")),
+  c(map("<C-j>", "<Down>")),
+
   -- easy select-all
   n(map("gA", "ggVG", { silent = true })),
   v(map("gA", "ggoG", { silent = true })),
@@ -77,11 +90,33 @@ keymap.bind({
   end, { expr = true })),
 
   -- moves line
-  n(map("<C-j>", ":m .+1<CR>==", { silent = true })),
-  i(map("<M-j>", "<Esc>:m .+1<CR>==gi", { silent = true })),
+  n(map("<S-Down>", ":m .+1<CR>==", { silent = true })),
+  i(map("<S-Down>", "<Esc>:m .+1<CR>==gi", { silent = true })),
   v(map("J", ":m '>+1<CR>gv=gv", { silent = true })),
-  n(map("<C-k>", ":m .-2<CR>==", { silent = true })),
-  i(map("<M-k>", "<Esc>:m .-2<CR>==gi", { silent = true })),
+  n(map("<S-Up>", ":m .-2<CR>==", { silent = true })),
+  i(map("<S-Up>", "<Esc>:m .-2<CR>==gi", { silent = true })),
   v(map("K", ":m '<-2<CR>gv=gv", { silent = true })),
   n(map("J", "'mz' . v:count1 . 'J`z'", { expr = true })), -- join lines without changing cursor position
+
+  -- Paste-Yank behavior
+  -- By default, in visual-line mode, the selected line will be yanked,
+  -- and replace the previous yanked line. This map to imporve that behaviour,
+  -- after paste, select the yanked line, so it's easy to yank that line again
+  v(map("p", "pgv")),
+  -- yank-Paste from clipboard
+  n(map(leader("p"), '"+p')),
+  v(map(leader("p"), '"+p')),
+  n(map(leader("P"), '"+P')),
+  v(map(leader("P"), '"+P')),
+  n(map(leader("y"), '"+y')),
+  v(map(leader("y"), '"+y')),
+  n(map(leader("Y"), '"+y$')),
+  n(map(leader("d"), '"+d')),
+
+  -- reselect indented line
+  v(map("<", "<gv")),
+  v(map(">", ">gv")),
+  v(map("=", "=gv")),
+  v(map("<BS>", "<gv")),
+  v(map("<TAB>", ">gv")),
 })
