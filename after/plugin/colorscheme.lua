@@ -6,7 +6,6 @@ vim.api.nvim_create_autocmd("VimEnter", {
     local colorschemes = {
       ["doom-one"] = "doom-one",
       kanagawa = "kanagawa",
-      material = "material",
       ["rose-pine"] = "rose-pine",
       tokyonight = "tokyonight",
       onedark = "onedark",
