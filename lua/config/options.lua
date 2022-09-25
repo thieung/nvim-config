@@ -17,4 +17,9 @@ o.relativenumber = true -- show line number relative to the line with the cursor
 -- STATUSLINE
 o.laststatus = 3 -- use global status line
 
-o.termguicolors = true -- enable gui colors for terminal
+-- HIGHTLIGHT
+o.cursorline = true
+o.termguicolors = true
+o.winblend = 0
+o.wildoptions = "pum"
+o.pumblend = 5
