@@ -24,12 +24,13 @@ keymap.bind({
   t(map("<Esc>", [[<C-\><C-n>]])),
 
   -- easy save & quit
-  map(leader("<Space>"), ex("update!")),
-  map("<C-s>", ex("update")),
+  map(leader("<Space>"), ex("w")), -- save
+  map("<C-s>", ex("w!")), -- force write
   map(leader(";"), ex("x")),
   map(leader("'"), ex("wall")),
-  map("[q", ex("q")),
-  map("[Q", ex("xall")),
+  map(leader("q"), ex("q")), -- quit
+  map("<C-q>", ex("q!")), -- force quit
+  map("[Q", ex("xall")), -- save tabs/unchanged buffers and exit vim
 
   -- command mode without arrows and tab
   nop(c(map("<Tab>"))),
@@ -48,6 +49,10 @@ keymap.bind({
   n(map("gA", "ggVG", { silent = true })),
   v(map("gA", "ggoG", { silent = true })),
 
+  -- better increment/decrement
+  n(map("-", "C-x")),
+  n(map("+", "C-a")),
+
   -- toggle number
   map(leader("nn"), ex("set relativenumber!")),
   map(leader("ln"), ex("set number!")),
@@ -60,6 +65,7 @@ keymap.bind({
   n(map(leader("X"), ex("bdelete!"))), -- close buffer
   n(map(leader("x"), ex("enew<BAR>bdelete #"))), -- close buffer without close window
   n(map(leader("bd"), ex("bprevious<BAR>bdelete #"))), -- delete current buffer and move to the previous buffer
+  n(map(leader("ca"), ex("%bd"))), -- close all buffers
   n(map("<S-Tab>", ex("bprevious"))), -- navigate to previous buffer
   n(map("<Tab>", ex("bnext"))), -- navigate to next buffer
 
