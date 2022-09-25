@@ -2,13 +2,14 @@ local group = vim.api.nvim_create_augroup("UseColorScheme", {})
 vim.api.nvim_create_autocmd("VimEnter", {
   group = group,
   callback = function()
-    local default = "kanagawa"
+    local default = "onedark"
     local colorschemes = {
       ["doom-one"] = "doom-one",
       kanagawa = "kanagawa",
       material = "material",
       ["rose-pine"] = "rose-pine",
       tokyonight = "tokyonight",
+      onedark = "onedark",
     }
 
     local colorscheme = colorschemes[os.getenv("NVIM_COLORSCHEME")] or default
