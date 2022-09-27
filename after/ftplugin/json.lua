@@ -1,5 +1,7 @@
-local set = vim.opt_local
+local b = vim.b
+b.format_on_save = true
 
+local set = vim.opt_local
 set.shiftwidth = 4
 set.softtabstop = 4
 set.tabstop = 4
