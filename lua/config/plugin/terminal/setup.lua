@@ -26,6 +26,12 @@ vim.keymap.set("n", "<leader>tk", term_map.kill)
 vim.keymap.set("n", "<leader>t]", term_map.cycle_next)
 vim.keymap.set("n", "<leader>t[", term_map.cycle_prev)
 
+local btop = require("terminal").terminal:new({
+  layout = { open_cmd = "float" },
+  cmd = { "btop" },
+  autoclose = true,
+})
+
 local lazygit = terminal.terminal:new({
   layout = { open_cmd = "float", height = 0.9, width = 0.9 },
   cmd = { "lazygit" },
@@ -33,6 +39,10 @@ local lazygit = terminal.terminal:new({
 })
 vim.env["GIT_EDITOR"] =
   "nvr -cc close -cc split --remote-wait +'set bufhidden=wipe'"
+
+vim.api.nvim_create_user_command("Btop", function()
+  btop:toggle(nil, true)
+end, { nargs = "?" })
 
 vim.api.nvim_create_user_command("Lazygit", function(args)
   lazygit.cwd = args.args and vim.fn.expand(args.args)
