@@ -9,6 +9,7 @@ gitsigns.setup({
     topdelete = { text = sign.HALF.right },
     changedelete = { text = sign.HALF.right },
   },
+  trouble = true,
   signcolumn = false,
   numhl = true,
   on_attach = function(bufnr)
