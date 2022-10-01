@@ -1,0 +1,24 @@
+{
+  "name": "thieung-snippets",
+  "engines": {
+    "vscode": "^1.71.2"
+  },
+  "languages": [
+    {
+      "id": "all",
+      "extensions": "*"
+    }
+  ],
+  "contributes": {
+    "snippets": [
+      {
+        "language": "ruby",
+        "path": "./ruby.json"
+      },
+      {
+        "language": "rails",
+        "path": "./rails.json"
+      }
+    ]
+  }
+}

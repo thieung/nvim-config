@@ -1,7 +1,16 @@
-local cmp = require("cmp")
-local snippet = require("luasnip")
+local cmp_ok, cmp = pcall(require, "cmp")
+local luasnip_ok, snippet = pcall(require, "luasnip")
+local loader_ok, loader = pcall(require, "luasnip/loaders/from_vscode")
 
-require("luasnip.loaders.from_vscode").lazy_load()
+if not (cmp_ok and luasnip_ok and loader_ok) then
+  return
+end
+
+snippet.config.set_config({ history = true })
+
+-- Load available snippets
+loader.lazy_load({ paths = { "./misc/snippets" } })
+loader.lazy_load()
 
 -- Highlight
 local COMPLETION_KIND = require("const.LSP_KIND").Completion
@@ -11,6 +20,19 @@ local source_hl = {
   buffer = "TSString",
   path = "Directory",
 }
+
+local function border(hl_name)
+  return {
+    { "╭", hl_name },
+    { "─", hl_name },
+    { "╮", hl_name },
+    { "│", hl_name },
+    { "╯", hl_name },
+    { "─", hl_name },
+    { "╰", hl_name },
+    { "│", hl_name },
+  }
+end
 
 require("utils").Highlight.colorscheme(function(h)
   local base = h.bg("Pmenu", { "NormalFloat", "Normal" })
@@ -27,7 +49,7 @@ local config = {
   preselect = cmp.PreselectMode.None, -- preselect mode (none | item)
   mapping = require("config.plugin.cmp.keymap").setup(cmp, snippet),
   experimental = { ghost_text = true }, -- experimental config
-  completion = { keyword_length = 3 }, -- completion config
+  completion = { keyword_length = 2 }, -- completion config
 }
 
 -- Snippet configuration
@@ -64,8 +86,8 @@ config.formatting = formatting
 local max = vim.api.nvim_get_option("pumheight")
 local half = math.floor(max / 2)
 config.sources = {
-  { name = "nvim_lsp", max_item_count = max, group_index = 1 },
-  { name = "luasnip", max_item_count = half, group_index = 2 },
+  { name = "luasnip", max_item_count = max, group_index = 1 },
+  { name = "nvim_lsp", max_item_count = half, group_index = 1 },
   { name = "path", keyword_length = 1, max_item_count = max, group_index = 2 },
   { name = "buffer", max_item_count = half, group_index = 3 },
 }
@@ -73,12 +95,13 @@ config.sources = {
 -- Window configuration
 config.window = {
   completion = {
-    winhighlight = "Normal:Pmenu,CursorLine:CmpCursorLine,Search:None",
+    border = border("CmpBorder"),
+    winhighlight = "Normal:Pmenu,CursorLine:PmenuSel,Search:None",
     col_offset = -3,
     side_padding = 0,
   },
   documentation = {
-    border = "rounded",
+    border = border("CmpDocBorder"),
     winhighlight = "Search:None",
     max_width = 80,
     max_height = 12,
