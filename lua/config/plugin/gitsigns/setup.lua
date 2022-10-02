@@ -1,4 +1,10 @@
-local gitsigns = require("gitsigns")
+local status_ok, gitsigns = pcall(require, "gitsigns")
+local gitrepo = vim.fn.isdirectory(".git/index")
+
+if not status_ok or not gitrepo then
+  return
+end
+
 local sign = require("const.LINE_CHAR")
 
 gitsigns.setup({

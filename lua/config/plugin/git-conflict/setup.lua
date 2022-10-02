@@ -1,5 +1,7 @@
 local ok, gitc = pcall(require, "git-conflict")
-if not ok then
+local gitrepo = vim.fn.isdirectory(".git/index")
+
+if not ok or not gitrepo then
   return
 end
 
