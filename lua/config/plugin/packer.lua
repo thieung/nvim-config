@@ -15,10 +15,10 @@ vim.cmd("packadd packer.nvim")
 
 local plugins = {
   require("config.plugin.plenary.packer_spec"),
+  require("config.plugin.colorbuddy.packer_spec"),
   require("config.plugin.schemastore.packer_spec"),
   require("config.plugin.treesitter.packer_spec"),
   require("config.plugin.treesitter-context.packer_spec"),
-  require("config.plugin.colorscheme.packer_spec"),
   require("config.plugin.devicons.packer_spec"),
   require("config.plugin.telescope.packer_spec"),
   require("config.plugin.lspconfig.packer_spec"),

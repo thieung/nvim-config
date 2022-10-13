@@ -12,14 +12,7 @@ snippet.config.set_config({ history = true })
 loader.lazy_load({ paths = { "./misc/snippets" } })
 loader.lazy_load()
 
--- Highlight
 local COMPLETION_KIND = require("const.LSP_KIND").Completion
-local source_hl = {
-  nvim_lua = "TSConstBuiltin",
-  luasnip = "TSComment",
-  buffer = "TSString",
-  path = "Directory",
-}
 
 local function border(hl_name)
   return {
@@ -33,17 +26,6 @@ local function border(hl_name)
     { "│", hl_name },
   }
 end
-
-require("utils").Highlight.colorscheme(function(h)
-  local base = h.bg("Pmenu", { "NormalFloat", "Normal" })
-  for kind, _ in pairs(COMPLETION_KIND) do
-    local inherit = ("CmpItemKind%s"):format(kind)
-    local group = ("%sIcon"):format(inherit)
-    local fallback = { ("TS%s"):format(kind), "CmpItemKindDefault" }
-    local bg = h.blend(h.fg(inherit, fallback), base, 0.15)
-    h.set(group, { inherit = inherit, bg = bg })
-  end
-end)
 
 local config = {
   preselect = cmp.PreselectMode.None, -- preselect mode (none | item)
@@ -62,14 +44,14 @@ config.snippet = {
 -- Formatting configuration
 local formatting = {}
 formatting.fields = { "kind", "abbr", "menu" }
-formatting.format = function(entry, item)
+formatting.format = function(_, item)
   local kind = item.kind
   local kind_hl_group = ("CmpItemKind%s"):format(kind)
 
-  item.kind_hl_group = ("%sIcon"):format(kind_hl_group)
+  item.kind_hl_group = kind_hl_group
   item.kind = (" %s "):format(COMPLETION_KIND[kind].icon)
 
-  item.menu_hl_group = source_hl[entry.source.name] or kind_hl_group
+  item.menu_hl_group = kind_hl_group
   item.menu = kind
 
   local half_win_width = math.floor(vim.api.nvim_win_get_width(0) / 2)
@@ -96,12 +78,12 @@ config.sources = {
 config.window = {
   completion = {
     border = border("CmpBorder"),
-    winhighlight = "Normal:Pmenu,CursorLine:PmenuSel,Search:None",
+    winhighlight = "Normal:CmpPmenu,CursorLine:PmenuSel,Search:None",
     col_offset = -3,
     side_padding = 0,
   },
   documentation = {
-    border = border("CmpDocBorder"),
+    border = "rounded",
     winhighlight = "Search:None",
     max_width = 80,
     max_height = 12,

@@ -16,5 +16,5 @@ colorizer.setup({
     "!prompt",
     "!popup",
   },
-  user_default_options = { mode = "background" },
+  user_default_options = { mode = "background", names = false },
 })

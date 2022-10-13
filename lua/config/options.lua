@@ -40,7 +40,7 @@ o.pumheight = 20 -- maximum number of items to show in the pop-up menu
 -- STATUSLINE
 o.laststatus = 3 -- use global status line
 
--- HIGHTLIGHT
+-- HIGHLIGHT
 o.cursorline = true
 o.termguicolors = true
 o.winblend = 0

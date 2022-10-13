@@ -20,30 +20,6 @@ gitsigns.setup({
   numhl = true,
   on_attach = function(bufnr)
     require("config.plugin.gitsigns.keymap").attach(gitsigns, bufnr)
-
-    require("utils").Highlight.colorscheme(function(h)
-      local base = h.bg("LineNr", { "Normal", "SignColumn", "NormalFloat" })
-
-      for _, kind in ipairs({ "Add", "Change", "Delete" }) do
-        local inherit = ("GitSigns%s"):format(kind)
-        h.set(("GitSigns%sNr"):format(kind), {
-          inherit = inherit,
-          bg = h.blend(h.fg(inherit), base, 0.10),
-        })
-        h.set(("GitSigns%sLn"):format(kind), {
-          bg = h.blend(h.fg(inherit), base, 0.05),
-        })
-        h.set(("GitSigns%sInline"):format(kind), {
-          bg = h.blend(h.fg(inherit), base, 0.35),
-        })
-
-        if kind ~= "Change" then
-          h.set(("GitSigns%sPreview"):format(kind), {
-            bg = h.blend(h.fg(inherit), base, 0.10),
-          })
-        end
-      end
-    end)
   end,
   preview_config = { border = "rounded" },
   current_line_blame_opts = { delay = vim.api.nvim_get_option("updatetime") },
