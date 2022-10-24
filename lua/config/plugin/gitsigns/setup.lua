@@ -5,19 +5,17 @@ if not status_ok or not gitrepo then
   return
 end
 
-local sign = require("const.LINE_CHAR")
-
 gitsigns.setup({
   signs = {
-    add = { text = sign.HALF.right },
-    change = { text = sign.HALF.right },
-    delete = { text = sign.HALF.right },
-    topdelete = { text = sign.HALF.right },
-    changedelete = { text = sign.HALF.right },
+    add = { text = "│" },
+    change = { text = "│" },
+    delete = { text = "" },
+    topdelete = { text = "‾" },
+    changedelete = { text = "~" },
   },
-  trouble = true,
-  signcolumn = false,
-  numhl = true,
+  -- trouble = true,
+  -- signcolumn = false,
+  -- numhl = true,
   on_attach = function(bufnr)
     require("config.plugin.gitsigns.keymap").attach(gitsigns, bufnr)
   end,
