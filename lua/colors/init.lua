@@ -25,7 +25,7 @@ function M.setup(theme)
     vim.cmd([[hi clear ]] .. highlight)
   end
 
-  require("utils").reload_modules("colors.highlights")
+  require("utils").General.reload_modules("colors.highlights")
 
   local Color = require("colors.utils").Color
   local palette = require("colors.themes." .. theme)
@@ -61,10 +61,27 @@ function M.setup(theme)
   Color.new("teal", palette.teal)
   Color.new("orange", palette.orange)
   Color.new("cyan", palette.cyan)
-  Color.new("line", palette.line)
+
   Color.new("statusline_bg", palette.statusline_bg)
   Color.new("pmenu_bg", palette.pmenu_bg)
   Color.new("folder_bg", palette.folder_bg)
+  Color.new("line", palette.line)
+
+  Color.new("light_grey", palette.light_grey or palette.grey)
+  Color.new("comment_grey", palette.comment_grey or palette.grey)
+  Color.new("cursor_grey", palette.cursor_grey or palette.grey)
+  Color.new("visual_grey", palette.visual_grey or palette.grey)
+  Color.new("special_grey", palette.special_grey or palette.grey)
+
+  Color.new("dark_cyan", palette.dark_cyan or palette.cyan)
+  Color.new("dark_red", palette.dark_red or palette.red)
+  Color.new("dark_yellow", palette.dark_yellow or palette.yellow)
+  Color.new("dark_purple", palette.dark_purple or palette.purple)
+
+  Color.new("diff_add", palette.diff_add or palette.green)
+  Color.new("diff_delete", palette.diff_delete or palette.red)
+  Color.new("diff_change", palette.diff_change or palette.yellow)
+  Color.new("diff_text", palette.diff_text or palette.blue)
 
   -- apply highlights
   require("colors.highlights.base")

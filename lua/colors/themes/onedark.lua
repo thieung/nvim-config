@@ -2,7 +2,8 @@ vim.opt.bg = "dark"
 
 return {
   -- base16 colors
-  base00 = "#181a1f", -- Default bg
+  -- https://github.com/LalitMaganti/base16-onedark-scheme/blob/master/onedark.yaml
+  base00 = "#1e222a", -- Default bg, alternative: "#282c34"
   base01 = "#353b45", -- Lighter bg (status bars, line number, folding marks)
   base02 = "#3e4451", -- Selection bg
   base03 = "#545862", -- Comments, Invisibles, Line Highlighting
@@ -20,18 +21,13 @@ return {
   base0F = "#be5046", -- Deprecated, Opening/Closing Embedded Language Tags
 
   -- main colors
+  -- https://github.com/joshdick/onedark.vim
+  -- https://github.com/ii14/onedark.nvim/blob/master/lua/onedark/colors.lua
+  -- https://github.com/NvChad/base46/blob/master/lua/base46/themes/onedark.lua
   white = "#abb2bf",
   black = "#181a1f",
-  -- darker_black = "#1b1f27", -- 6% darker than black
-  -- lighter_black = "#252931", -- 6% lighter than black
-  -- one_bg = "#282c34", -- ~10% lighter than black
-  -- one_bg2 = "#353b45", -- ~19% lighter than black
-  -- one_bg3 = "#373b43", -- ~27% lighter than black
-  grey = "#5c6370", -- ~40% lighter than black
-  -- grey_fg = "#565c64", -- 10% lighter than grey
-  -- grey_fg2 = "#6f737b", -- 20% lighter than greyk
-  -- light_grey = "#6f737b", -- 28% lighter than grey
-  red = "#e86671",
+  grey = "#5c6370",
+  red = "#E06C75",
   pink = "#ff75a0",
   green = "#98c379",
   blue = "#61afef",
@@ -40,8 +36,26 @@ return {
   teal = "#519ABA",
   orange = "#d19a66",
   cyan = "#56b6c2",
-  line = "#31353d", -- for lines like vertsplit
-  statusline_bg = "#22262e", -- 4% lighter than black
-  pmenu_bg = "#61afef",
+
+  light_grey = "#848b98",
+  comment_grey = "#5C6370",
+  cursor_grey = "#2C323C",
+  visual_grey = "#3E4452",
+  menu_grey = "#3E4452",
+  special_grey = "#3B4048",
+
+  dark_cyan = "#2b6f77", -- ~40% darker of cyan
+  dark_red = "#993939", -- ~70% darker of red
+  dark_yellow = "#93691d", -- ~70% darker of yellow
+  dark_purple = "#8a3fa0", -- ~60% darker of purple
+
+  pmenu_bg = "#73b8f1",
   folder_bg = "#61afef",
+  statusline_bg = "#22262e",
+  line = "#181A1F", -- for lines like vertsplit
+
+  diff_add = "#31392b",
+  diff_delete = "#382b2c",
+  diff_change = "#1c3448",
+  diff_text = "#2c5372",
 }
