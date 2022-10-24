@@ -2,6 +2,9 @@ local g = vim.g
 
 g.mapleader = " "
 
+-- enable diagnostics in statusline
+g.status_diagnostics_enabled = true
+
 -- disable some builtin vim plugins
 local default_plugins = {
   "2html_plugin",
