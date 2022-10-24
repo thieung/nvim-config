@@ -52,3 +52,6 @@ o.completeopt:append({
   "menuone", -- use the popup menu also when there is only one match
   "noinsert", -- do not insert any text for a match until the user selects a match from the menu
 })
+
+-- Disable nvim intro
+o.shortmess:append("sI")
