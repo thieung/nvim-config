@@ -95,7 +95,7 @@ local heirline_opts = {
     -- default highlight for the entire statusline
     hl = { fg = "fg", bg = "bg" },
 
-    -- VIM mode component
+    -- VIM MODE component
     st_utils.component.mode({
       mode_text = {
         icon = { kind = "VIM", padding = { right = 1, left = 1 } },
@@ -109,7 +109,7 @@ local heirline_opts = {
       },
     }),
 
-    -- Empty space component
+    -- EMPTY SPACE component
     st_utils.component.builder({
       { provider = st_utils.provider.empty },
       surround = {
@@ -120,7 +120,7 @@ local heirline_opts = {
 
     -- FILE INFO  component
     st_utils.component.file_info({
-      file_icon = { highlight = false, padding = { left = 0 } },
+      file_icon = { highlight = true, padding = { left = 0 } },
       padding = { right = 1 },
       surround = { separator = "left", condition = false },
       unique_path = {},
@@ -150,28 +150,6 @@ local heirline_opts = {
 
     -- NAV component
     st_utils.component.nav(),
-  },
-
-  -- second element is winbar
-  {
-    fallthrough = false,
-    {
-      condition = function()
-        return st_utils.condition.buffer_matches({
-          buftype = { "terminal", "prompt", "nofile", "help", "quickfix" },
-          filetype = {
-            "NvimTree",
-            "neo-tree",
-            "dashboard",
-            "Outline",
-            "aerial",
-          },
-        })
-      end,
-      init = function()
-        vim.opt_local.winbar = nil
-      end,
-    },
   },
 }
 
