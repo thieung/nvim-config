@@ -1,0 +1,21 @@
+local c = require("colors.utils").colors
+local Group = require("colors.utils").Group
+
+Group.new("rubyBlockParameter", c.red)
+Group.new("rubyBlockParameterList", c.red)
+Group.new("rubyClass", c.purple)
+Group.new("rubyConstant", c.yellow)
+Group.new("rubyControl", c.purple)
+Group.new("rubyEscape", c.red)
+Group.new("rubyFunction", c.blue)
+Group.new("rubyGlobalVariable", c.red)
+Group.new("rubyInclude", c.blue)
+Group.new("rubyIncluderubyGlobalVariable", c.red)
+Group.new("rubyInstanceVariable", c.red)
+Group.new("rubyInterpolation", c.cyan)
+Group.new("rubyInterpolationDelimiter", c.red)
+Group.new("rubyInterpolationDelimiter", c.red)
+Group.new("rubyRegexp", c.cyan)
+Group.new("rubyRegexpDelimiter", c.cyan)
+Group.new("rubyStringDelimiter", c.green)
+Group.new("rubySymbol", c.cyan)

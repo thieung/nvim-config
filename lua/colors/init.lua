@@ -71,6 +71,7 @@ function M.setup(theme)
   Color.new("comment_grey", palette.comment_grey or palette.grey)
   Color.new("cursor_grey", palette.cursor_grey or palette.grey)
   Color.new("visual_grey", palette.visual_grey or palette.grey)
+  Color.new("menu_grey", palette.menu_grey or palette.grey)
   Color.new("special_grey", palette.special_grey or palette.grey)
 
   Color.new("dark_cyan", palette.dark_cyan or palette.cyan)
@@ -87,6 +88,27 @@ function M.setup(theme)
   require("colors.highlights.base")
   require("colors.highlights.syntax")
   require("colors.highlights.integrations")
+
+  -- terminal colors
+  local g = vim.g
+  g.terminal_color_0 = palette.base01
+  g.terminal_color_1 = palette.base08
+  g.terminal_color_2 = palette.base0B
+  g.terminal_color_3 = palette.base0A
+  g.terminal_color_4 = palette.base0D
+  g.terminal_color_5 = palette.base0E
+  g.terminal_color_6 = palette.base0C
+  g.terminal_color_7 = palette.base05
+  g.terminal_color_8 = palette.base03
+  g.terminal_color_9 = palette.base08
+  g.terminal_color_10 = palette.base0B
+  g.terminal_color_11 = palette.base0A
+  g.terminal_color_12 = palette.base0D
+  g.terminal_color_13 = palette.base0E
+  g.terminal_color_14 = palette.base0C
+  g.terminal_color_15 = palette.base07
+  g.terminal_color_background = g.terminal_color_0
+  g.terminal_color_foreground = g.terminal_color_7
 end
 
 return M
