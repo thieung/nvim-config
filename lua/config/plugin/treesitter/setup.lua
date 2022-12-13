@@ -36,7 +36,7 @@ ts_config.setup({
       node_decremental = "<BS>",
     },
   },
-  indent = { enable = true },
+  indent = { enable = false },
 
   -------------------
   -- extra modules --
