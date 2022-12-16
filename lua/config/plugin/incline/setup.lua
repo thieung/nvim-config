@@ -2,15 +2,15 @@ local config = {}
 
 config.render = function(props)
   if vim.api.nvim_buf_get_name(props.buf) == "" then
-    return "[No Name]"
+    return " [No Name] "
   end
 
   if props.focused then
-    if not vim.api.nvim_buf_get_var(props.buf, "lsp_attached") then
+    if not vim.b[props.buf].lsp_attached then
       return nil
     end
 
-    if not vim.api.nvim_buf_get_var(props.buf, "nvim_navic_attached") then
+    if not vim.b[props.buf].nvim_navic_attached then
       return nil
     end
 
@@ -35,7 +35,7 @@ config.hide = {
 
 if config.hide and config.hide.cursorline then
   require("utils").Augroup("InclineMoveToScondLine", function(autocmd)
-    autocmd("BufRead", "*", function()
+    autocmd({ "UIEnter", "BufRead" }, "*", function()
       if
         vim.api.nvim_win_get_cursor(0)[1] > 1
         or vim.api.nvim_buf_line_count(0) < 2
