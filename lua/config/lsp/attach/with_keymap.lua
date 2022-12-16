@@ -11,13 +11,7 @@ function M.attach(client, bufnr)
     codeActionProvider = function()
       return {
         n(map("[a", lsp.code_action)),
-        v(map("[a", function()
-          lsp.range_code_action(
-            nil,
-            { vim.fn.line("v"), -1 },
-            { vim.fn.line("."), -1 }
-          )
-        end)),
+        v(map("[a", lsp.code_action)),
       }
     end,
     codeLensProvider = n(map("gcl", vim.lsp.codelens.run)),
@@ -43,9 +37,9 @@ function M.attach(client, bufnr)
         vim.cmd.update()
       end)
     end)),
-    documentRangeFormattingProvider = v(
-      map(leader("<CR>"), lsp.range_formatting)
-    ),
+    documentRangeFormattingProvider = v(map(leader("<CR>"), function()
+      lsp.format({ bufnr = bufnr, timeout_ms = 5000 })
+    end)),
   }
 
   local keymaps = {}
