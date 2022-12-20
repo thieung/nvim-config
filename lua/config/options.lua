@@ -7,9 +7,11 @@ o.clipboard = "unnamedplus" -- connection to the system clipboard
 o.conceallevel = 2 -- hide concealed text unless it has a custom replacement
 
 -- TABS & INDENTATION
+o.softtabstop = -1 -- number of spaces that a <Tab> counts for while performing editing operations, negative means use 'shiftwidth' value
+o.tabstop = 4 -- number of spaces that a <Tab> in the file counts for, controls how existing tab characters are displayed
 o.expandtab = true -- enable the use of space in tab
-o.tabstop = 2 -- number of space in a tab
 o.shiftwidth = 2 -- number of spaces to use for each step of (auto)indent
+o.synmaxcol = 120 -- do syntax highlighting until synmaxcol character
 o.linebreak = true
 o.breakindent = true
 o.showbreak = "  ﬌"

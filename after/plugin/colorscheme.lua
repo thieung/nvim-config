@@ -1,5 +1,5 @@
 local group = vim.api.nvim_create_augroup("UseColorScheme", {})
-vim.api.nvim_create_autocmd("VimEnter", {
+vim.api.nvim_create_autocmd("UIEnter", {
   group = group,
   callback = function()
     local default = "onedark"
