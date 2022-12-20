@@ -35,7 +35,10 @@ config.hide = {
 
 if config.hide and config.hide.cursorline then
   require("utils").Augroup("incline_manage_cursor", function(autocmd)
-    autocmd({ "UIEnter", "BufRead" }, "*", function()
+    -- moves the cursor line position to the second line when
+    -- it leaves the window and the cursor is on the first line, this ensures
+    -- the cursor line to never overlaps the incline window.
+    autocmd({ "UIEnter", "BufRead", "WinLeave" }, "*", function()
       if
         vim.api.nvim_win_get_cursor(0)[1] > 1
         or vim.api.nvim_buf_line_count(0) < 2
