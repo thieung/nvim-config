@@ -1,4 +1,4 @@
-local group = vim.api.nvim_create_augroup("UseColorScheme", {})
+local group = vim.api.nvim_create_augroup("set_colorscheme", {})
 vim.api.nvim_create_autocmd("UIEnter", {
   group = group,
   callback = function()
