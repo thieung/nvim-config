@@ -55,3 +55,55 @@ keymap.bind({
     telescope_builtin.diagnostics()
   end)),
 }, {})
+
+require("utils").Augroup("attach_telescope_lsp_keymap", function(autocmd)
+  autocmd("LspAttach", "*", function(args)
+    if not args.data then
+      return
+    end
+
+    local client = vim.lsp.get_client_by_id(args.data.client_id)
+    local capabilities_map = {
+      documentSymbolProvider = {
+        key = "[ls",
+        fn = function()
+          require("telescope.builtin").lsp_document_symbols()
+        end,
+      },
+      workspaceSymbolProvider = {
+        key = "[lS",
+        fn = function()
+          require("telescope.builtin").lsp_workspace_symbols()
+        end,
+      },
+      referencesProvider = {
+        key = "[lr",
+        fn = function()
+          require("telescope.builtin").lsp_references()
+        end,
+      },
+      implementationProvider = {
+        key = "[li",
+        fn = function()
+          require("telescope.builtin").lsp_implementations()
+        end,
+      },
+      definitionProvider = {
+        key = "[gd",
+        fn = function()
+          require("telescope.builtin").lsp_definitions()
+        end,
+      },
+    }
+
+    for capability, bind in pairs(capabilities_map) do
+      if client.server_capabilities[capability] then
+        vim.api.nvim_buf_set_keymap(args.buf, "n", bind.key, "", {
+          silent = true,
+          noremap = true,
+          callback = bind.fn,
+        })
+      end
+    end
+  end)
+end)

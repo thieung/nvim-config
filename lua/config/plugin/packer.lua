@@ -47,7 +47,7 @@ packer.init(setup.init)
 packer.startup(setup.use(plugins))
 
 local utils = require("utils")
-utils.Augroup("OnPackerEvent", function(autocmd)
+utils.Augroup("packer_event_action", function(autocmd)
   autocmd("User", "PackerCompileDone", function()
     vim.notify(
       (" Compiled at %s"):format(os.date()),
