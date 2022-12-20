@@ -1,20 +1,21 @@
 local config = {}
 
 config.render = function(props)
-  if vim.api.nvim_buf_get_name(props.buf) == "" then
-    return " [No Name] "
-  end
-
   if props.focused then
-    if not vim.b[props.buf].lsp_attached then
+    if vim.api.nvim_win_get_cursor(0)[1] == vim.fn.line("w0") then
       return nil
     end
 
-    if not vim.b[props.buf].nvim_navic_attached then
+    local buf = vim.b[props.buf]
+    if not buf.lsp_attached or not buf.nvim_navic_attached then
       return nil
     end
 
     return require("config.plugin.incline.render.focus")()
+  end
+
+  if vim.api.nvim_buf_get_name(props.buf) == "" then
+    return " [No Name] "
   end
 
   return require("config.plugin.incline.render.unfocus")(props)
@@ -28,27 +29,5 @@ config.window = {
   },
   zindex = 25,
 }
-
-config.hide = {
-  cursorline = true,
-}
-
-if config.hide and config.hide.cursorline then
-  require("utils").Augroup("incline_manage_cursor", function(autocmd)
-    -- moves the cursor line position to the second line when
-    -- it leaves the window and the cursor is on the first line, this ensures
-    -- the cursor line to never overlaps the incline window.
-    autocmd({ "UIEnter", "BufRead", "WinLeave" }, "*", function()
-      if
-        vim.api.nvim_win_get_cursor(0)[1] > 1
-        or vim.api.nvim_buf_line_count(0) < 2
-      then
-        return
-      end
-
-      vim.api.nvim_win_set_cursor(0, { 2, 0 })
-    end)
-  end)
-end
 
 require("incline").setup(config)
