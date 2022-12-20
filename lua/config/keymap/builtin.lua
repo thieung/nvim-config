@@ -70,6 +70,7 @@ keymap.bind({
   n(map("<Tab>", ex("bnext"))), -- navigate to next buffer
 
   -- tabs
+  n(map("<C-w>O", ex("tabonly"))),
   n(map(leader("t"), ex("tabnew"))),
   n(map(leader("["), ex("-tabmove"))),
   n(map(leader("]"), ex("+tabmove"))),
