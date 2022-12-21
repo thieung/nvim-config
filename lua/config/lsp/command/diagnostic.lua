@@ -15,6 +15,50 @@ function M.attach(bufnr)
     buf = bufnr,
     cmds = {
       {
+        name = "BufEnable",
+        cmd = function()
+          api.enable(0)
+        end,
+      },
+      {
+        name = "Enable",
+        cmd = function()
+          api.enable()
+        end,
+      },
+      {
+        name = "BufDisable",
+        cmd = function(args)
+          local display_opts = {}
+          for _, arg in ipairs(args.fargs) do
+            display_opts[arg] = false
+          end
+
+          if next(display_opts) then
+            api.show(nil, 0, nil, display_opts)
+          else
+            api.disable(0)
+          end
+        end,
+        opts = { nargs = "*" },
+      },
+      {
+        name = "Disable",
+        cmd = function(args)
+          local display_opts = {}
+          for _, arg in ipairs(args.fargs) do
+            display_opts[arg] = false
+          end
+
+          if next(display_opts) then
+            api.show(nil, nil, nil, display_opts)
+          else
+            api.disable()
+          end
+        end,
+        opts = { nargs = "*" },
+      },
+      {
         name = "ShowInLine",
         cmd = function()
           api.open_float(0, opts(scope.line))
