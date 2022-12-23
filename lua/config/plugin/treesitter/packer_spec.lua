@@ -2,10 +2,21 @@ return {
   {
     "nvim-treesitter/nvim-treesitter",
     run = ":TSUpdate",
+    module = "nvim-treesitter",
+    setup = function()
+      require("utils").Lazyload.on_file_open("nvim-treesitter")
+    end,
+    cmd = {
+      "TSInstall",
+      "TSBufEnable",
+      "TSBufDisable",
+      "TSEnable",
+      "TSDisable",
+      "TSModuleInfo",
+    },
     config = function()
       require("config.plugin.treesitter.setup")
     end,
-    module = "nvim-treesitter",
     ft = {
       "bash",
       "bib",
