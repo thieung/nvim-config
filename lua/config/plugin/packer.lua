@@ -20,6 +20,7 @@ local plugins = {
   require("config.plugin.treesitter.packer_spec"),
   require("config.plugin.treesitter-context.packer_spec"),
   require("config.plugin.devicons.packer_spec"),
+  require("config.plugin.autopairs.packer_spec"),
   require("config.plugin.telescope.packer_spec"),
   require("config.plugin.lspconfig.packer_spec"),
   require("config.plugin.null-ls.packer_spec"),
@@ -35,10 +36,11 @@ local plugins = {
   require("config.plugin.colorizer.packer_spec"),
   require("config.plugin.trouble.packer_spec"),
   require("config.plugin.terminal.packer_spec"),
-  require("config.plugin.mini.packer_spec"),
   require("config.plugin.smart-splits.packer_spec"),
   require("config.plugin.git-conflict.packer_spec"),
   require("config.plugin.heirline.packer_spec"),
+  require("config.plugin.indent-blankline.packer_spec"),
+  require("config.plugin.comment.packer_spec"),
 }
 
 local packer = require("packer")
