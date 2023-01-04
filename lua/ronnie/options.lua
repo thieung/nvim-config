@@ -181,7 +181,7 @@ opt.undolevels = 1000 -- Ensure we can undo a lot!
 opt.undodir = vim.fn.stdpath("data") .. "/undos" -- Set the undo directory
 
 -- Folds
-o.foldlevelstart = 2
+o.foldlevelstart = 99 -- Display unfolded as soon as it is opened
 o.foldexpr = 'nvim_treesitter#foldexpr()' -- require nvim-ufo
 o.foldmethod = 'expr' -- require nvim-ufo
 ---------------------------------------------------------------------------- }}}
