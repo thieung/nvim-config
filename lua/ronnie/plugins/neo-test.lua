@@ -60,6 +60,14 @@ return {
 						})
 					end
 				}),
+				require("neotest-dart")({
+					command = "flutter",
+				}),
+				require("neotest-go")({
+					experimental = {
+						test_table = true,
+					},
+				}),
 			},
 			consumers = {
 				overseer = require("neotest.consumers.overseer"),

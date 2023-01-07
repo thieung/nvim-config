@@ -48,7 +48,11 @@ return {
 				null_ls.builtins.formatting.shfmt.with({
 					filetypes = { "sh", "zsh" },
 				}),
-				null_ls.builtins.formatting.stylua,
+				null_ls.builtins.formatting.stylua.with({
+					condition = function(u)
+						return u.root_has_file({ "stylua.toml", ".stylua.toml" })
+					end,
+				}),
 			},
 		})
 	end,
