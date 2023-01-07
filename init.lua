@@ -10,3 +10,9 @@ require(namespace .. ".globals")
 require(namespace .. ".utils.functions")
 require(namespace .. ".options")
 require(namespace .. ".lazy")
+
+if vim.o.background == "light" then
+	vim.cmd([[colorscheme onelight]])
+else
+	vim.cmd([[colorscheme onedark]])
+end

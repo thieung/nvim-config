@@ -120,36 +120,6 @@ function rn.MoveToBuffer()
     end
   end)
 end
---------------------------------------------------------------------------- }}}
------------------------------------LAZYGIT---------------------------------- {{{
-function rn.Lazygit()
-  local Terminal = require("toggleterm.terminal").Terminal
-  return Terminal:new({
-    cmd = "lazygit",
-    dir = "git_dir",
-    direction = "float",
-    float_opts = {
-      border = "single",
-      height = vim.fn.winheight("%"),
-      width = vim.fn.winwidth("%"),
-    },
-    on_open = function(term)
-      vim.o.laststatus = 0
-      vim.o.showtabline = 0
-
-      -- Escape key does nothing in Lazygit
-      if vim.fn.mapcheck("jk", "t") ~= "" then
-        vim.api.nvim_buf_del_keymap(term.bufnr, "t", "jk")
-        vim.api.nvim_buf_del_keymap(term.bufnr, "t", "<esc>")
-      end
-      vim.cmd("startinsert!")
-    end,
-    on_close = function(term)
-      vim.o.laststatus = 3
-      vim.o.showtabline = 2
-    end,
-  })
-end
 
 --------------------------------------------------------------------------- }}}
 ----------------------------------SNIPPETS---------------------------------- {{{

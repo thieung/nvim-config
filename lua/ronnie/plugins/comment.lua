@@ -1,6 +1,6 @@
 return {
 	"numToStr/Comment.nvim", -- Comment out lines with gcc
-	event = "VeryLazy",
+	keys = { "gcc", { "gc", mode = "v" } },
 	init = function()
 		require("legendary").keymaps({
 			{

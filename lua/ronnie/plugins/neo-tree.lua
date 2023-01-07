@@ -1,4 +1,4 @@
-local M = {
+return {
 	"nvim-neo-tree/neo-tree.nvim", -- File explorer
 	cmd = "Neotree",
 	branch = "v2.x",
@@ -6,28 +6,25 @@ local M = {
 		"nvim-lua/plenary.nvim",
 		"MunifTanjim/nui.nvim",
 	},
-}
-
-function M.init()
-	require("legendary").keymaps({
-		{ "<C-n>", "<cmd>Neotree toggle<CR>", hide = true, description = "Neotree: Toggle" },
-		{ "<C-z>", "<cmd>Neotree reveal=true toggle<CR>", hide = true, description = "Neotree: Reveal File" },
-	})
-end
-
-function M.config()
-	require("neo-tree").setup({
+	init = function()
+		require("legendary").keymaps({
+			{ "<C-n>", "<cmd>Neotree toggle<CR>", hide = true, description = "Neotree: Toggle" },
+			{ "<C-z>", "<cmd>Neotree reveal=true toggle<CR>", hide = true, description = "Neotree: Reveal File" },
+		})
+	end,
+	config = {
 		close_if_last_window = true,
 		enable_git_status = true,
 		enable_diagnostics = false,
 		default_component_configs = {
 			icon = {
-				folder_open = "",
-				folder_closed = "",
-				folder_empty = "ﰊ",
-				default = "*",
+				folder_open = "",
+				folder_closed = "",
+				folder_empty = "",
+				default = "",
 			},
 			indent = {
+				padding = 0,
 				with_markers = false,
 			},
 			modified = {
@@ -44,7 +41,5 @@ function M.config()
 		window = {
 			width = 40,
 		},
-	})
-end
-
-return M
+	}
+}

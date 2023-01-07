@@ -69,13 +69,6 @@ return {
     description = "Git sync remote repo",
   },
   {
-    "Lazygit",
-    function()
-      rn.Lazygit():toggle()
-    end,
-    description = "Git terminal",
-  },
-  {
     ":New",
     ":enew",
     description = "New buffer",

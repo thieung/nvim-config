@@ -28,6 +28,8 @@ function SetupMultipleCursors()
 end
 
 return {
+	-- Lazy.nvim
+	{ "<Leader>l", "<cmd>Lazy<CR>", hide = true, description = "Open Lazy UI" },
 	-- Buffers
 	{ "<C-c>", "<cmd>Bdelete<CR>", hide = true, description = "Close Buffer" }, -- bufdelete.nvim
 	{ "<C-q>", "<cmd>q!<CR>", hide = true, description = "Force quit" },
@@ -61,6 +63,9 @@ return {
 		description = "Save buffer",
 		mode = { "n", "i" },
 	},
+
+	-- Tab page
+	{ "<Leader>tc", "<cmd>tabclose<CR>", hide = true, description = "Close tabpage" },
 
 	-- Editing words
 	{
@@ -138,7 +143,7 @@ return {
 
 	-- Splits
 	{ "<LocalLeader>sv", "<C-w>v", description = "Split: Vertical" },
-	{ "<LocalLeader>sh", "<C-w>h", description = "Split: Horizontal" },
+	{ "<LocalLeader>sh", "<C-w>s", description = "Split: Horizontal" },
 	{ "<LocalLeader>sc", "<C-w>q", description = "Split: Close" },
 	{ "<LocalLeader>so", "<C-w>o", description = "Split: Close all but current" },
 

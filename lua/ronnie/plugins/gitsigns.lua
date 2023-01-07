@@ -1,10 +1,7 @@
-local M = {
+return {
 	"lewis6991/gitsigns.nvim", -- Git signs in the sign column
 	event = "BufReadPre",
-}
-
-function M.config()
-	require("gitsigns").setup({
+	config = {
 		keymaps = {}, -- Do not use the default mappings
 		signs = {
 			add = { hl = "GitSignsAdd", text = "+", show_count = false },
@@ -25,7 +22,6 @@ function M.config()
 			'⒑', '⒒', '⒓', '⒔', '⒕', '⒖', '⒗', '⒘', '⒙', '⒚', '⒛',
 		},
 		update_debounce = 50,
-	})
-end
 
-return M
+	}
+}
