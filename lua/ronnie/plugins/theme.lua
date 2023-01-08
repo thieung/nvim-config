@@ -25,20 +25,23 @@ return {
 				vim.fn.stdpath("cache") .. "/onedarkpro_dotfiles"
 			),
 			plugins = {
-				barbar = false,
-				copilot = false,
-				lsp_saga = false,
-				hop = false,
-				marks = false,
-				nvim_tree = false,
-				polygot = false,
-				op_nvim = false,
-				packer = false,
-				startify = false,
-				telescope = false,
-				toggleterm = false,
-				vim_ultest = false,
-				which_key = false,
+				all = false,
+				aerial = true,
+				barbar = true,
+				gitsigns = true,
+				indentline = true,
+				leap = true,
+				neotest = true,
+				neo_tree = true,
+				nvim_cmp = true,
+				nvim_bqf = true,
+				nvim_dap = true,
+				nvim_dap_ui = true,
+				native_lsp = true,
+				nvim_navic = true,
+				telescope = true,
+				treesitter = true,
+				trouble = true,
 			},
 			styles = {
 				comments = "italic",
@@ -62,7 +65,6 @@ return {
 					telescope_results = helper.darken('bg', 4, 'onedark'),
 					telescope_preview = helper.darken('bg', 6, 'onedark'),
 					telescope_selection = helper.darken('bg', 8, 'onedark'),
-					copilot = helper.darken('gray', 8, 'onedark'),
 					breadcrumbs = helper.darken('gray', 10, 'onedark'),
 				},
 				light = {
@@ -75,7 +77,6 @@ return {
 					telescope_results = helper.darken('bg', 5, 'onelight'),
 					telescope_preview = helper.darken('bg', 7, 'onelight'),
 					telescope_selection = helper.darken('bg', 9, 'onelight'),
-					copilot = helper.lighten('gray', 8, 'onelight'),
 					breadcrumbs = helper.lighten('gray', 8, 'onelight'),
 				},
 			},
@@ -132,9 +133,6 @@ return {
 				-- Cmp
 				CmpItemAbbrMatch = { fg = "${blue}", style = "bold" },
 				CmpItemAbbrMatchFuzzy = { fg = "${blue}", style = "underline" },
-
-				-- Copilot
-				CopilotSuggestion = { fg = "${copilot}", style = "italic" },
 
 				-- DAP
 				DebugBreakpointLine = { fg = "${red}", style = "underline" },
@@ -203,6 +201,38 @@ return {
 					fg = "${telescope_preview}",
 					bg = "${telescope_preview}",
 				},
+
+				-- Diffview
+				-- DiffviewFilePanelTitle = {
+				-- 	fg = "${blue}",
+				-- 	style = "bold"
+				-- },
+				-- DiffviewFilePanelCounter = {
+				-- 	fg = "${purple}",
+				-- 	style = "bold"
+				-- },
+				-- DiffviewFilePanelFileName = { fg = "${fg}" },
+				-- DiffviewNormal = { link = "Normal" },
+				-- DiffviewCursorLine = { link = "CursorLine" },
+				-- DiffviewVertSplit = { link = "VertSplit" },
+				-- DiffviewSignColumn = { link = "SignColumn" },
+				-- DiffviewStatusLine = { link = "StatusLine" },
+				-- DiffviewStatusLineNC = { link = "StatusLineNC" },
+				-- DiffviewEndOfBuffer = { link = "EndOfBuffer" },
+				-- DiffviewFilePanelRootPath = { fg = "${gray}" },
+				-- DiffviewFilePanelPath = { fg = "${gray}" },
+				-- DiffviewFilePanelInsertions = { fg = "${green}" },
+				-- DiffviewFilePanelDeletions = { fg = "${red}" },
+				-- DiffviewStatusAdded = { fg = "${green}" },
+				-- DiffviewStatusUntracked = { fg = "${blue}" },
+				-- DiffviewStatusModified = { fg = "${blue}" },
+				-- DiffviewStatusRenamed = { fg = "${blue}" },
+				-- DiffviewStatusCopied = { fg = "${blue}" },
+				-- DiffviewStatusTypeChange = { fg = "${blue}" },
+				-- DiffviewStatusUnmerged = { fg = "${blue}" },
+				-- DiffviewStatusUnknown = { fg = "${red}" },
+				-- DiffviewStatusDeleted = { fg = "${red}" },
+				-- DiffviewStatusBroken = { fg = "${red}" }
 			},
 		})
 	end,
